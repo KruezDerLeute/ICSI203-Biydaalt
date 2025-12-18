@@ -1,0 +1,283 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+p {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  background: url(./images/image.png);
+  background-repeat: no-repeat;
+  /* Prevent tiling */
+  background-position: center;
+  /* Center the image */
+  background-size: cover;
+  /* Fill screen, keep aspect ratio */
+  min-height: 100vh;
+}
+
+
+.header {
+  display: flex;
+  margin-top: 60px;
+
+}
+
+.border {
+  border: 2px solid black
+}
+
+.util {
+  justify-self: flex-end;
+  margin-left: auto;
+}
+
+.item {
+  border: 1px solid black;
+  border-radius: 10px;
+  width: 30px;
+  /* Adjusted width for better fit */
+
+  height: 30px;
+  /* Adjusted height for better fit */
+
+  display: inline-flex;
+  /* Ensures the icon is centered */
+
+  align-items: center;
+  /* Centers the icon vertically */
+
+  justify-content: center;
+  /* Centers the icon horizontally */
+}
+
+.util input {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 30px;
+  /* Match the height of the icons */
+  margin-right: 20px;
+  /* Optional: Add some space between the input and icons */
+  border-radius: 5px;
+  margin-bottom: 3px;
+  padding-left: 10px;
+
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  outline: none;
+
+
+  background: rgba(255, 255, 255, 0.25);
+  /* semi-transparent */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  /* Safari */
+
+  outline: none;
+}
+
+.util input::placeholder {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.util input:focus {
+  background: rgba(255, 255, 255, 0.35);
+  border-color: rgba(0, 0, 0, 0.6);
+}
+
+.bi-geo-alt-fill {
+  margin-right: 20px;
+}
+
+.main {
+  margin-top: 30px;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 40px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(50px);
+  -webkit-backdrop-filter: blur(12px);
+  /* Safari */
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.top h2 {
+  font-size: 4vh;
+}
+
+.date {
+  border: 1px solid black;
+  border-radius: 5px;
+  height: 35px;
+  padding-right: 10px;
+  padding-left: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.date p {
+  font-size: 2vh;
+}
+
+.middle {
+  display: flex;
+  justify-content: space-between;
+}
+
+.temps {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.temps p {
+  font-size: 2.4vh;
+}
+
+.temps h2 {
+  margin: 0;
+  font-size: 9vh;
+}
+
+.weather-icon {
+  transform: scale(2.3);
+}
+
+.weather-details {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  /* 4 items inline */
+  gap: 12px;
+  /* space between items */
+}
+
+.detail-item {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  padding: 10px;
+  border-radius: 5px;
+  justify-content: center;
+}
+
+.detail-item-title {
+  font-size: 2vh;
+}
+
+.temp-hrs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+  gap: clamp(8px, 2vw, 16px);
+}
+
+.hrs-item {
+  border: 1px solid black;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.hrs-item p {
+  text-align: center;
+}
+
+@media (max-width: 1200px) {
+  .weather-details {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    /* 4 items inline */
+    gap: 12px;
+    /* space between items */
+  }
+
+  body {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+@media (max-width: 1050px) {
+  .weather-details {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    /* 4 items inline */
+    gap: 12px;
+    /* space between items */
+  }
+
+  body {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+@media (max-width: 700px) {
+  .temp-hrs {
+    grid-template-columns: repeat(4, minmax(60px, 1fr));
+  }
+}
+
+@media (max-width: 663px) {
+  .weather-details {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    /* 4 items inline */
+    gap: 12px;
+    /* space between items */
+  }
+
+  .temp-hrs {
+    grid-template-columns: repeat(3, minmax(60px, 1fr));
+  }
+}
+
+@media (max-width: 577px) {
+  header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-right: auto;
+  }
+
+
+
+  .util {
+    margin-left: 0;
+    flex-direction: column;
+  }
+
+  .top {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .text {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .sub-condition {
+    margin-bottom: 10px;
+  }
+
+  .main {
+    margin-bottom: 60px;
+
+  }
+}
