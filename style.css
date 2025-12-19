@@ -178,7 +178,7 @@ body {
 
 .temp-hrs {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+  grid-template-columns: repeat(4, minmax(60px, 1fr));
   gap: clamp(8px, 2vw, 16px);
 }
 
@@ -279,5 +279,20 @@ body {
   .main {
     margin-bottom: 60px;
 
+  }
+}
+
+@media (max-width:450px) {
+  .middle {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .temp-hrs {
+    grid-template-columns: repeat(2, minmax(60px, 1fr));
+  }
+
+  .condition {
+    margin-bottom: 10px;
   }
 }

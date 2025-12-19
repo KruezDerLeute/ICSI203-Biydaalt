@@ -18,7 +18,7 @@ const WEATHER_CODE_MAP = {
   1009: "overcast",
 
   // 🌫 Mist / Fog / Freezing fog
-  1030: "mist",
+  1030: "fog",
   1135: "fog",
   1147: "fog",
 
@@ -89,14 +89,14 @@ function normalizeCondition(text) {
 function getWeatherIcon(condition, isDay) {
   const base = WEATHER_CODE_MAP[condition.code] || "not-available";
   const time = isDay ? "day" : "night";
+  // console.log(condition);
 
-  // Clear
-  if (base === "clear") {
+  if (base == "clear") {
     return `./images/clear-${time}.svg`;
   }
 
-  // Partly cloudy (SPECIAL CASE)
-  if (base === "partly-cloudy") {
+  // Partly cloudy
+  if (base == "partly-cloudy") {
     return `./images/partly-cloudy-${time}.svg`;
   }
 
@@ -110,12 +110,10 @@ function getWeatherIcon(condition, isDay) {
     return `./images/${base}-${time}.svg`;
   }
 
-  // Overcast
   if (base === "overcast") {
     return `./images/overcast-${time}.svg`;
   }
 
-  // Default: partly-cloudy with condition suffix
   return `./images/partly-cloudy-${time}-${base}.svg`;
 }
 
@@ -124,25 +122,30 @@ async function setData(input) {
   const url = `https://corsproxy.io/?https://api.weatherapi.com/v1/forecast.json?key=3dcba07cf7a4452a8e6120524251712&q=Ulaanbaatar&days=14`;
 
   const responseForecast = await fetch(url);
-  const dataForcast = await responseForecast.json(); // 👈 resolve JSON
+  const dataForcast = await responseForecast.json();
 
   const forecastArray = dataForcast.forecast.forecastday;
 
-  console.log(forecastArray); // Array(14)
-  console.log(forecastArray[0].astro.sunrise); // First day
-  console.log(forecastArray[0].date); // "2025-12-18"
+  // console.log(forecastArray); // Array(14)
+  // console.log(forecastArray[0].astro.sunrise); // First day
+  // console.log(forecastArray[0].date); // "2025-12-18"
 
-  console.log(responseForecast);
+  // console.log(responseForecast);
   //-----------------------------------------------------------
 
   var response = await fetch(`${apiUrl}${input}&key=${apikey}`);
   const data = await response.json();
+  console.log(response);
 
   city.innerHTML = `${data.location.name}, ${data.location.country}`;
   condition.innerHTML = data.current.condition.text;
   subCondition.innerHTML = "Feels like " + data.current.feelslike_c + "°C";
   temp.innerHTML = data.current.temp_c + "°C";
-  date.innerHTML = data.location.localtime.split(" ")[0];
+  date.innerHTML = new Date().toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
 
   humidity.innerHTML = data.current.humidity + "%";
   windSpd.innerHTML = data.current.wind_kph + "km/h";
@@ -164,7 +167,7 @@ async function setData(input) {
 
   const currentHour = new Date().getHours();
 
-  forecastArray[0].hour.slice(currentHour, currentHour + 9).forEach((hour) => {
+  forecastArray[0].hour.slice(currentHour, currentHour + 8).forEach((hour) => {
     const time = hour.time.split(" ")[1];
 
     const hrsItem = document.createElement("div");
