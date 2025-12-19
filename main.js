@@ -222,6 +222,8 @@ async function setData(input) {
   render5DayForecast(daysForcast);
 }
 
+setData("Ulaanbaatar");
+
 input.addEventListener("keydown", (event) => {
   console.log("You pressed a key!");
   if (event.key == "Enter") {
