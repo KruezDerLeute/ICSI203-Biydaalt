@@ -117,6 +117,40 @@ function getWeatherIcon(condition, isDay) {
   return `./images/partly-cloudy-${time}-${base}.svg`;
 }
 
+function render5DayForecast(forecastArray) {
+  const aside = document.querySelector(".daily-forecast");
+  aside.innerHTML = "";
+
+  forecastArray.slice(1, 7).forEach((day) => {
+    const date = new Date(day.date).toLocaleDateString("en-US", {
+      weekday: "short",
+      month: "short",
+      day: "numeric",
+    });
+
+    const icon = getWeatherIcon(
+      day.day.condition,
+      1 // daytime icons for daily forecast
+    );
+
+    const item = document.createElement("div");
+    item.className = "day-item";
+
+    item.innerHTML = `
+      <div class="day-date">${date}</div>
+
+      <img src="${icon}" width="48" />
+
+      <div class="day-temps">
+        <div>${Math.round(day.day.maxtemp_c)}°</div>
+        <div>${Math.round(day.day.mintemp_c)}°</div>
+      </div>
+    `;
+
+    aside.appendChild(item);
+  });
+}
+
 async function setData(input) {
   console.log("forecast api--------------------------\n");
   const url = `https://corsproxy.io/?https://api.weatherapi.com/v1/forecast.json?key=3dcba07cf7a4452a8e6120524251712&q=Ulaanbaatar&days=14`;
@@ -182,6 +216,10 @@ async function setData(input) {
 
     tempHrsContainer.appendChild(hrsItem);
   });
+
+  const daysForcast = forecastArray;
+  console.log(daysForcast);
+  render5DayForecast(daysForcast);
 }
 
 input.addEventListener("keydown", (event) => {

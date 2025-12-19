@@ -30,61 +30,63 @@
           <i class="bi bi-github item"></i>
         </div>
       </header>
-
-      <main class="main">
-        <section class="general-info">
-          <div class="top">
-            <div class="text">
-              <h2 class="city">Paris, FR</h2>
-              <p class="condition">Broken clouds</p>
-              <!-- <p class="sub-condition">Gentle Breez</p> -->
-            </div>
-            <div class="date"><p>2025-12-18</p></div>
-          </div>
-
-          <div class="middle">
-            <div class="temps">
-              <h2>7°C</h2>
-              <p>Feels like 5°C</p>
+      <div class="container">
+        <main class="main">
+          <section class="general-info">
+            <div class="top">
+              <div class="text">
+                <h2 class="city">Paris, FR</h2>
+                <p class="condition">Broken clouds</p>
+                <!-- <p class="sub-condition">Gentle Breez</p> -->
+              </div>
+              <div class="date"><p>2025-12-18</p></div>
             </div>
 
-            <img
-              src="./images/cloud-down.svg"
-              class="img-fluid"
-              style="max-width: 150px"
-            />
-          </div>
+            <div class="middle">
+              <div class="temps">
+                <h2>7°C</h2>
+                <p>Feels like 5°C</p>
+              </div>
 
-          <div class="weather-details">
-            <div class="detail-item">
-              <span class="detail-item-title">Wind speed</span>
-              <span class="wind-speed">4.03m/s</span>
+              <img
+                src="./images/cloud-down.svg"
+                class="img-fluid"
+                style="max-width: 150px"
+              />
             </div>
-            <div class="detail-item">
-              <span class="detail-item-title">Humidity</span>
-              <span class="humidity">96%</span>
+
+            <div class="weather-details">
+              <div class="detail-item">
+                <span class="detail-item-title">Wind speed</span>
+                <span class="wind-speed">4.03m/s</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-item-title">Humidity</span>
+                <span class="humidity">96%</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-item-title">Pressure</span>
+                <span class="pressure">1025 hPa</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-item-title">Visibility</span>
+                <span class="visibility">10km</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-item-title">Sun rise</span>
+                <span class="sun-rise">7.48</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-item-title">Sunset</span>
+                <span class="sunset">15:49</span>
+              </div>
             </div>
-            <div class="detail-item">
-              <span class="detail-item-title">Pressure</span>
-              <span class="pressure">1025 hPa</span>
-            </div>
-            <div class="detail-item">
-              <span class="detail-item-title">Visibility</span>
-              <span class="visibility">10km</span>
-            </div>
-            <div class="detail-item">
-              <span class="detail-item-title">Sun rise</span>
-              <span class="sun-rise">7.48</span>
-            </div>
-            <div class="detail-item">
-              <span class="detail-item-title">Sunset</span>
-              <span class="sunset">15:49</span>
-            </div>
-          </div>
-          <hr style="border: none; border-top: 3px solid black;" />
-          <div class="temp-hrs"></div>
-        </section>
-      </main>
+            <hr style="border: none; border-top: 3px solid black;" />
+            <div class="temp-hrs"></div>
+          </section>
+        </main>
+        <aside class="daily-forecast"></aside>
+      </div>
     </div>
   </body>
 </html>
